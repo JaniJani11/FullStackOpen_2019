@@ -1,1 +1,1 @@
-#Hakemisto sisältää FullStackOpen_2019 kurssin palautettavat tehtävät#
+#Hakemisto sisältää FullStackOpen_2019 kurssin palautettavat tehtävät
