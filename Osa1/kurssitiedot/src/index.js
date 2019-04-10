@@ -2,19 +2,29 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const App = () => {
-  const course = 'Half Stack -sovelluskehitys'
-  const part1 = 'Reactin perusteet'
-  const exercises1 = 10
-  const part2 = 'Tiedonvälitys propseilla'
-  const exercises2 = 7
-  const part3 = 'Komponenttien tila'
-  const exercises3 = 14
+  const course = {
+      name: 'Half Stack -sovelluskehitys',
+      parts: [
+      {
+          name: 'Reactin perusteet',
+          exercises: 10
+      },
+      {
+          name: 'Tiedonvälitys propseilla',
+          exercises: 7
+      },
+      {
+          name: 'Komponenttien tila',
+          exercises: 14
+      }
+    ]
+}
 
   return (
     <div>
-    <Header course={course} />
-    <Content part1={part1} part2={part2} part3={part3} exercises1={exercises1} exercises2={exercises2} exercises3={exercises3} />
-    <Total exercises1={exercises1} exercises2={exercises2} exercises3={exercises3} />
+    <Header course={course.name} />
+    <Content parts={course.parts} />
+    <Total parts={course.parts} />
   </div>
   )
 }
@@ -27,24 +37,24 @@ const Header = (props) => {
 
 const Content = (props) => {
     return (
-        <>
-        <p>
-        <Part part={props.part1} exercises={props.exercises1} />
-      </p>
-      <p>
-      <Part part={props.part2} exercises={props.exercises2} />
-      </p>
-      <p>
-      <Part part={props.part3} exercises={props.exercises3} />
-      </p>  
-      </>
+    <>
+    <p>
+        <Part part={props.parts[0]} />
+        </p>
+    <p>
+        <Part part={props.parts[1]} />
+    </p>
+    <p>
+        <Part part={props.parts[2]} />
+    </p>  
+    </>
     )
 }
 
 const Total = (props) => {
     return (
         <>
-        <p>yhteensä {props.exercises1 + props.exercises2 + props.exercises3} tehtävää</p>
+        <p>yhteensä {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises} tehtävää</p>
         </>
     )
 }
@@ -52,7 +62,7 @@ const Total = (props) => {
 const Part = (props) => {
     return(
         <>
-        {props.part} {props.exercises}
+        {props.part.name} {props.part.exercises}
         </>
     )
 }
